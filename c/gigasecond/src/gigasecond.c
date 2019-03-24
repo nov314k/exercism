@@ -1,6 +1,6 @@
 #include "gigasecond.h"
 
-time_t gigasecond_after(time_t given_seconds_since_epoch)
+time_t gigasecond_after(time_t seconds_since_epoch)
 {
-   return (given_seconds_since_epoch + 1e9);
+   return (seconds_since_epoch + 1e9);
 }

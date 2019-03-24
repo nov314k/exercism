@@ -1,20 +1,21 @@
 #include <stdbool.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdint.h>
 
 bool is_isogram(const char phrase[])
 {
-   if (phrase == NULL) {
+   if (NULL == phrase) {
       return false;
    }
    size_t phrase_len = strlen(phrase);
-   if (phrase_len == 0) {
+   if (0 == phrase_len) {
       return true;
    }
-   for (unsigned int i = 1; i < phrase_len; ++i) {
-      for (unsigned int j = 0; j < i; ++j) {
-         if (tolower(phrase[i]) == tolower(phrase[j]) && phrase[j] != '-'
-             && phrase[j] != ' ') {
+   for (uint16_t i = 1; i < phrase_len; ++i) {
+      for (uint16_t j = 0; j < i; ++j) {
+         if (tolower(phrase[i]) == tolower(phrase[j]) && '-' != phrase[j]
+             && ' ' != phrase[j]) {
             return false;
          }
       }

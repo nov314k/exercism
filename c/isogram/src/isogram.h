@@ -5,4 +5,4 @@
 
 bool is_isogram(const char phrase[]);
 
-#endif
+#endif                          /* ISOGRAM_H  */
