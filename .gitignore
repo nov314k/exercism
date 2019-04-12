@@ -1,5 +1,5 @@
 expl
-*/node_modules/*
+javascript/*/node_modules
 *.*~
 *.bak
 *.exe
