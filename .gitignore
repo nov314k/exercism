@@ -1,7 +1,8 @@
+expl
+*/node_modules/*
 *.*~
 *.bak
+*.exe
 *.out
 *.swp
 *.orig
-expl
-.exercism

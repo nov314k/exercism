@@ -1,15 +1,20 @@
-function isNumber(n) {
+function isNumber (n) {
   return !isNaN(parseFloat(n)) && isFinite(n)
 }
 
 export const solve = (x, y) => {
-      if (isNumber(x) && isNumber(y)) {
-    var radius = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))
-    if (radius <= 1) return 10
-    else if(radius <= 5) return 5
-    else if (radius <= 10) return 1
-    else return 0
-  } else {
-    return null
+  var points = null
+  if (isNumber(x) && isNumber(y)) {
+    var biggerCoordinate = Math.max(x, y)
+    if (biggerCoordinate <= 1) {
+      points = 10
+    } else if (biggerCoordinate <= 5) {
+      points = 5
+    } else if (biggerCoordinate <= 10) {
+      points = 1
+    } else {
+      points = 0
+    }
   }
+  return points
 }
