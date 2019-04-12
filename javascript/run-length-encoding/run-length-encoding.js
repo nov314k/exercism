@@ -1,5 +1,6 @@
-encode = (sequence) => {
-  "use strict"
+"use strict"
+
+export const encode = (sequence) => {
   var currentLetter
   var previousLetter
   var counter = 1
@@ -24,24 +25,25 @@ encode = (sequence) => {
   return encodedSequence
 }
 
-console.log(encode('AAABCCCCCCDDD'))
+export const decode = (encodedSequence) => {
+  var sequence = ''
+  var repetitions = ''
+  for (var i = 0; i < encodedSequence.length; i++) {
+  	if (isNumber(encodedSequence.charAt(i))) {
+  		repetitions += encodedSequence.charAt(i);
+  	} else {
+  		for (var j = 0; j < repetitions; j++) {
+  			sequence += encodedSequence.charAt(i)
+  		}
+  		repetitions = ''
+  	}
+  }
+  return sequence
+}
 
 function isNumber(n) {
    return !isNaN(parseFloat(n)) && isFinite(n);
 }
-//
-// var code = '12A3B4C'
-// var decoded = ''
-// var broj = ''
-// for (var i = 0; i < code.length; i++) {
-// 	if (isNumber(code.charAt(i))) {
-// 		broj += code.charAt(i);
-// 	} else {
-// 		for (var j = 0; j < broj; j++) {
-// 			decoded += code.charAt(i)
-// 		}
-// 		broj = ''
-// 	}
-// }
-// console.log("Decoded string: ")
-// console.log(decoded)
+
+//console.log(encode('AAABCCCCCCDDD'))
+//console.log(decode('3A1B6C3D'))
