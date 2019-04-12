@@ -1,5 +1,6 @@
 expl
 javascript/*/node_modules
+javascript/*/zznode_modules
 *.*~
 *.bak
 *.exe
