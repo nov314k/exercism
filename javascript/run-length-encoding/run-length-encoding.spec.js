@@ -27,7 +27,7 @@ describe('run-length encode a string', () => {
 });
 
 describe('run-length decode a string', () => {
-  xtest('decode empty string', () => {
+  test('decode empty string', () => {
     expect(decode('')).toEqual('');
   });
 

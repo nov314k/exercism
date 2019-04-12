@@ -21,6 +21,7 @@ export const encode = (sequence) => {
 				}
 			previousLetter = currentLetter
 		}
+    // Can this be combined with the above code?
     if (counter > 1) {
       encodedSequence += counter
     }
@@ -32,15 +33,17 @@ export const encode = (sequence) => {
 export const decode = (encodedSequence) => {
   var sequence = ''
   var repetitions = ''
-  for (var i = 0; i < encodedSequence.length; i++) {
-  	if (isNumber(encodedSequence.charAt(i))) {
-  		repetitions += encodedSequence.charAt(i);
-  	} else {
-  		for (var j = 0; j < repetitions; j++) {
-  			sequence += encodedSequence.charAt(i)
-  		}
-  		repetitions = ''
-  	}
+  if (encodedSequence.length > 0) {
+    for (var i = 0; i < encodedSequence.length; i++) {
+    	if (isNumber(encodedSequence.charAt(i))) {
+    		repetitions += encodedSequence.charAt(i);
+    	} else {
+    		for (var j = 0; j < repetitions; j++) {
+    			sequence += encodedSequence.charAt(i)
+    		}
+    		repetitions = ''
+    	}
+    }
   }
   return sequence
 }
