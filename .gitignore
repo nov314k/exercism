@@ -1,6 +1,7 @@
 expl
+cpp/*/CMakeFiles
+cmake_install.cmake
 javascript/*/node_modules
-javascript/*/zznode_modules
 *.*~
 *.bak
 *.exe
