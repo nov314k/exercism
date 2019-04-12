@@ -10,7 +10,9 @@ export const encode = (sequence) => {
 		for (var i = 1; i < sequence.length; i++) {
 			currentLetter = sequence.charAt(i)
 				if (previousLetter !== currentLetter) {
-					encodedSequence += counter
+          if (counter > 1) {
+					  encodedSequence += counter
+          }
 					encodedSequence += previousLetter
 					counter = 1
 				}
@@ -19,7 +21,9 @@ export const encode = (sequence) => {
 				}
 			previousLetter = currentLetter
 		}
-		encodedSequence += counter
+    if (counter > 1) {
+      encodedSequence += counter
+    }
 		encodedSequence += previousLetter
   }
   return encodedSequence
