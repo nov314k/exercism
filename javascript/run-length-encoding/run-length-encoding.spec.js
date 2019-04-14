@@ -31,15 +31,15 @@ describe('run-length decode a string', () => {
     expect(decode('')).toEqual('');
   });
 
-  xtest('decode string with single characters only', () => {
+  test('decode string with single characters only', () => {
     expect(decode('XYZ')).toEqual('XYZ');
   });
 
-  xtest('decode string with no single characters', () => {
+  test('decode string with no single characters', () => {
     expect(decode('2A3B4C')).toEqual('AABBBCCCC');
   });
 
-  xtest('decode string with single characters mixed with repeated characters', () => {
+  test('decode string with single characters mixed with repeated characters', () => {
     expect(decode('12WB12W3B24WB')).toEqual('WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB');
   });
 

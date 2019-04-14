@@ -31,13 +31,20 @@ export const encode = (sequence) => {
 }
 
 export const decode = (encodedSequence) => {
+  var char
   var sequence = ''
   var repetitions = ''
   if (encodedSequence.length > 0) {
     for (var i = 0; i < encodedSequence.length; i++) {
     	if (isNumber(encodedSequence.charAt(i))) {
-    		repetitions += encodedSequence.charAt(i);
+    		repetitions += encodedSequence.charAt(i)
     	} else {
+        if (!isNumber(encodedSequence.charAt(i + 1)) && repetitions === '') {
+          repetitions = '1'
+        }
+        if (i != 0 && encodedSequence.charAt(i) != encodedSequence.charAt(i - 1)) {
+          repetitions = '1'
+        }
     		for (var j = 0; j < repetitions; j++) {
     			sequence += encodedSequence.charAt(i)
     		}
