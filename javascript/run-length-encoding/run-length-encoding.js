@@ -39,15 +39,14 @@ export const decode = (encodedSequence) => {
     	if (isNumber(encodedSequence.charAt(i))) {
     		repetitions += encodedSequence.charAt(i)
     	} else {
-        if (!isNumber(encodedSequence.charAt(i + 1)) && repetitions === '') {
-          repetitions = '1'
+        if (encodedSequence.charAt(i) != encodedSequence.charAt(i - 1)) {
+          if (!isNumber(encodedSequence.charAt(i + 1)) && repetitions === '') {
+            repetitions = '1'
+          }
+          for (var j = 0; j < repetitions; j++) {
+      			sequence += encodedSequence.charAt(i)
+      		}
         }
-        if (i != 0 && encodedSequence.charAt(i) != encodedSequence.charAt(i - 1)) {
-          repetitions = '1'
-        }
-    		for (var j = 0; j < repetitions; j++) {
-    			sequence += encodedSequence.charAt(i)
-    		}
     		repetitions = ''
     	}
     }
