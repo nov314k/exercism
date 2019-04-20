@@ -8,3 +8,5 @@ javascript/*/node_modules
 *.out
 *.swp
 *.orig
+*.pyc
+expl.py
