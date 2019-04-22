@@ -47,6 +47,13 @@ class HighScoreTest(unittest.TestCase):
         expected = [40]
         self.assertEqual(HighScores(scores).personal_top_three(), expected)
 
+    def test_latest_remains_after_getting_personal_top_three(self):
+        """Ensures the order of elements in sefl.scores is preserved."""
+        scores = [10, 30, 90, 30, 100, 20, 10, 0, 30, 40, 40, 70, 70]
+        expected = 70
+        HighScores(scores).personal_top_three()
+        self.assertEqual(HighScores(scores).latest(), expected)
+
 
 if __name__ == "__main__":
     unittest.main()
