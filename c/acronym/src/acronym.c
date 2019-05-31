@@ -1,16 +1,21 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdint.h>
 #define MAX_NUMOF_CHARS 1024
 
-char *abbreviate(char *phrase)
+char *abbreviate(const char *phrase)
 {
    if (NULL == phrase || 0 == strcmp(phrase, "")) {
       return NULL;
    }
    /* Given test examples, this fixed-size data structure should suffice.  */
-   char *tla = (char *)malloc(MAX_NUMOF_CHARS * sizeof(char));
+   char *tla = malloc(MAX_NUMOF_CHARS * sizeof(char));
+   if (NULL == tla) {
+      printf("Memory allocation failed!");
+      abort();
+   }
    uint16_t tla_index = 0;
    if (isalpha(phrase[0])) {    /* First character can be a space.  */
       tla[tla_index] = toupper(phrase[0]);
