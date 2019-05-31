@@ -24,25 +24,25 @@ class PalindromeProductsTest(unittest.TestCase):
         self.assertEqual(value, 1)
         self.assertFactorsEqual(factors, {(1, 1)})
 
-    # ~ def test_largest_palindrome_from_single_digit_factors(self):
-        # ~ value, factors = largest_palindrome(min_factor=1, max_factor=9)
-        # ~ self.assertEqual(value, 9)
-        # ~ self.assertFactorsEqual(factors, {(1, 9), (3, 3)})
+    def test_largest_palindrome_from_single_digit_factors(self):
+        value, factors = largest_palindrome(min_factor=1, max_factor=9)
+        self.assertEqual(value, 9)
+        self.assertFactorsEqual(factors, {(1, 9), (3, 3)})
 
-    # ~ def test_smallest_palindrome_from_double_digit_factors(self):
-        # ~ value, factors = smallest_palindrome(min_factor=10, max_factor=99)
-        # ~ self.assertEqual(value, 121)
-        # ~ self.assertFactorsEqual(factors, {(11, 11)})
+    def test_smallest_palindrome_from_double_digit_factors(self):
+        value, factors = smallest_palindrome(min_factor=10, max_factor=99)
+        self.assertEqual(value, 121)
+        self.assertFactorsEqual(factors, {(11, 11)})
 
-    # ~ def test_largest_palindrome_from_double_digit_factors(self):
-        # ~ value, factors = largest_palindrome(min_factor=10, max_factor=99)
-        # ~ self.assertEqual(value, 9009)
-        # ~ self.assertFactorsEqual(factors, {(91, 99)})
+    def test_largest_palindrome_from_double_digit_factors(self):
+        value, factors = largest_palindrome(min_factor=10, max_factor=99)
+        self.assertEqual(value, 9009)
+        self.assertFactorsEqual(factors, {(91, 99)})
 
-    # ~ def test_smallest_palindrome_from_triple_digit_factors(self):
-        # ~ value, factors = smallest_palindrome(min_factor=100, max_factor=999)
-        # ~ self.assertEqual(value, 10201)
-        # ~ self.assertFactorsEqual(factors, {(101, 101)})
+    def test_smallest_palindrome_from_triple_digit_factors(self):
+        value, factors = smallest_palindrome(min_factor=100, max_factor=999)
+        self.assertEqual(value, 10201)
+        self.assertFactorsEqual(factors, {(101, 101)})
 
     # ~ def test_largest_palindrome_from_triple_digit_factors(self):
         # ~ value, factors = largest_palindrome(min_factor=100, max_factor=999)
