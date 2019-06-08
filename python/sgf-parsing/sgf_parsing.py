@@ -17,16 +17,86 @@ class SgfTree(object):
         if len(self.children) != len(other.children):
             return False
         for a, b in zip(self.children, other.children):
-            if a != b:
+            if not (a == b):
                 return False
         return True
 
+    def __repr__(self):
+        rep = '(;'
+        for k, vs in self.properties.items():
+            rep += k
+            for v in vs:
+                rep += '[{}]'.format(v)
+        if self.children:
+            if len(self.children) > 1:
+                rep += '('
+            for c in self.children:
+                rep += repr(c)[1:-1]
+            if len(self.children) > 1:
+                rep += ')'
+        return rep + ')'
 
-    def __ne__(self, other):
-        return not self == other
 
-
+def is_upper(s):
+    a, z = map(ord, 'AZ')
+    return all(
+        a <= o and o <= z
+        for o in map(ord, s)
+    )
 
 
 def parse(input_string):
-    pass
+    root = None
+    current = None
+    stack = list(input_string)
+
+    def assert_that(condition):
+        if not condition:
+            raise ValueError(
+                'invalid format at {}:{}: {}'.format(
+                    repr(input_string),
+                    len(input_string) - len(stack),
+                    repr(''.join(stack))
+                )
+            )
+    assert_that(stack)
+
+    def pop():
+        if stack[0] == '\\':
+            stack.pop(0)
+        ch = stack.pop(0)
+        return ' ' if ch in ['\t'] else ch
+
+    def peek():
+        return stack[0]
+
+    def pop_until(ch):
+        try:
+            v = ''
+            while peek() != ch:
+                v += pop()
+            return v
+        except IndexError:
+            raise ValueError('Unable to find {}'.format(ch))
+    while stack:
+        assert_that(pop() == '(' and peek() == ';')
+        while pop() == ';':
+            properties = {}
+            while is_upper(peek()):
+                key = pop_until('[')
+                assert_that(is_upper(key))
+                values = []
+                while peek() == '[':
+                    pop()
+                    values.append(pop_until(']'))
+                    pop()
+                properties[key] = values
+            if root is None:
+                current = root = SgfTree(properties)
+            else:
+                current = SgfTree(properties)
+                root.children.append(current)
+            while peek() == '(':
+                child_input = pop() + pop_until(')') + pop()
+                current.children.append(parse(child_input))
+    return root
