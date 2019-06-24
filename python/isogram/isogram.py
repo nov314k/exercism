@@ -1,5 +1,8 @@
 def is_isogram(string):
-    processed = string.replace(" ", "").replace("-", "").lower()
-    if len(processed) == len(set(processed)):
-        return True
-    return False
+    seen = set()
+    for char in string.lower():
+        if char.isalpha():
+            if char in seen:
+                return False
+            seen.add(char)
+    return True

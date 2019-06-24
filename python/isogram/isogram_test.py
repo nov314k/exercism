@@ -46,7 +46,7 @@ class IsogramTest(unittest.TestCase):
     def test_same_first_and_last_characters(self):
         self.assertIs(is_isogram("angola"), False)
 
-    # Additional tests for this track
+    # ~ # Additional tests for this track
 
     def test_isogram_with_duplicated_letter_and_nonletter_character(self):
         self.assertIs(is_isogram("Aleph Bot Chap"), False)
