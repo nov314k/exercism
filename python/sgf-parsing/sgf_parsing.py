@@ -22,6 +22,7 @@ class SgfTree(object):
         return True
 
     def __repr__(self):
+        """Ironically, encoding to SGF is much easier"""
         rep = '(;'
         for k, vs in self.properties.items():
             rep += k
