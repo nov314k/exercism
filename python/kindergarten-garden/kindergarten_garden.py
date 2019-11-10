@@ -5,13 +5,15 @@ class Garden(object):
 
     PLANTS = {"C": "Clover", "G": "Grass", "R": "Radishes", "V": "Violets"}
 
+    PLANTS_PER_STUDENT = 2
+
     def __init__(self, diagram, students=None):
         students = sorted(students or self.STUDENTS)
         top, bottom = diagram.splitlines()
         self.cups = {}
         for index, student in enumerate(students[:len(top)]):
-            a = index * 2
-            b = a + 2
+            a = index * self.PLANTS_PER_STUDENT
+            b = a + self.PLANTS_PER_STUDENT
             self.cups.setdefault(student, [])
             self.cups[student].extend(
                 self.PLANTS[plant] for plant in top[a:b]
