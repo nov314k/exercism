@@ -12,7 +12,7 @@ class Luhn:
         self.card_num = self.card_num.replace(" ", "")
         if not self.card_num.isdigit() or len(self.card_num) < 2:
             return False
-        numbers = list(map(int, self.card_num))
+        numbers = [int(num) for num in self.card_num]
         # For even-length card_num's, even-index digits are doubled
         # For  odd-length card_num's,  odd-index digits are doubled
         doubled_digits_sum = sum(
